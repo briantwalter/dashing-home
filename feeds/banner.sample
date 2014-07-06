@@ -1,0 +1,21 @@
+#!/bin/bash -x
+
+#
+# banner.sh		Simple message POST
+# version		0.0.1
+# author		Brian Walter @briantwalter
+# description		POST a banner message to dashing
+#
+
+APIKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXX
+APIEND=http://dash.app.walternet.us/widgets/banner
+BANNER=$1
+
+# make sure we got something to POST
+if [ "$1" == "" ]; then
+  echo "usage: $0 <"message in quotes">"
+  exit 1
+else
+  # do the thing
+  curl -d "{ \"auth_token\": \"$APIKEY\", \"text\": \"$BANNER\" }" ${APIEND}
+fi
